@@ -1,15 +1,16 @@
 import React from "react";
 
+import "../../node_modules/bulma/css/bulma.min.css";
 //import containerStyles from "./container.module.css";
-import { Hero } from "react-bulma-components/full";
 
 export default props => (
-  <Hero color="danger" size="fullheight">
-    <Hero.Body>
-      <div class="container has-text-centered">
+  <section className="hero is-fullheight is-danger">
+    <div className="hero-body">
+      <div className="container">
         <h1 className="title">{props.title}</h1>
+        <span />
         <h2 className="subtitle">{props.subtitle}</h2>
       </div>
-    </Hero.Body>
-  </Hero>
+    </div>
+  </section>
 );
