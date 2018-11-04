@@ -1,5 +1,9 @@
-.container {
-  margin: 3rem auto;
-  max-width: 600px;
-  color: crimson;
+.contact {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.foo {
+  padding: 0 0.5rem;
 }
