@@ -1,6 +1,5 @@
 import React from "react";
 
-import "../../node_modules/bulma/css/bulma.min.css";
 import containerStyles from "./container.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

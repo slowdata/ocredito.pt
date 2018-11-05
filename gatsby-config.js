@@ -1,9 +1,12 @@
-module.export = {
+module.exports = {
+  siteMetadata: {
+    title: "Credito"
+  },
   plugins: [
     {
       resolve: "gatsby-plugin-typography",
       options: {
-        pathToConfigModule: "src/util/typography"
+        pathToConfigModule: "src/utils/typography"
       }
     }
   ]
