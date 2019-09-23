@@ -3,10 +3,42 @@ import React, { Component } from "react";
 import contactStyle from "./contact.module.css";
 
 class ContactPage extends Component {
+  state = {
+    name: "",
+    phone: "",
+    email: "",
+    goal: "",
+    rent: "",
+    credit: "",
+    income: "",
+    household1: "",
+    household2: "",
+    terms: false
+  };
+  handleChange = e => {
+    console.log(e.target);
+
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value });
+  };
+
   handleSubmit = e => {
-    console.log(e);
+    console.log(e.target);
   };
   render() {
+    const {
+      name,
+      phone,
+      email,
+      goal,
+      rent,
+      credit,
+      income,
+      household1,
+      household2,
+      terms
+    } = this.state;
     return (
       <div className="hero ">
         <div className="hero-body">
@@ -22,10 +54,12 @@ class ContactPage extends Component {
                           className="input"
                           type="text"
                           placeholder="Manuel António Santos Silva"
-                          required
+                          name="name"
+                          value={name}
+                          onChange={this.handleChange}
                         />
                       </div>
-                      <p className="help">Nome completo</p>
+                      <div className="help">Nome completo</div>
                     </div>
                     <div className="field">
                       <label className="label">Telemóvel</label>
@@ -35,7 +69,9 @@ class ContactPage extends Component {
                           type="tel"
                           placeholder="961234567"
                           pattern="[0-9]{9}"
-                          required
+                          name="phone"
+                          value={phone}
+                          onChange={this.handleChange}
                         />
                       </div>
                     </div>
@@ -46,14 +82,16 @@ class ContactPage extends Component {
                           className="input"
                           type="email"
                           placeholder="manuel@mail.pt"
-                          required
+                          name="email"
+                          value={email}
+                          onChange={this.handleChange}
                         />
                       </div>
                     </div>
                     <div className="field">
                       <label className="label">Finalidade do Crédito</label>
-                      <div class="control">
-                        <div class="select">
+                      <div className="control">
+                        <div className="select">
                           <select>
                             <option>Aquisição de Imóvel</option>
                             <option>Troca de crédito de habitação</option>
@@ -70,7 +108,13 @@ class ContactPage extends Component {
                         Valor atual da Prestação / Renda
                       </label>
                       <div className="control">
-                        <input className="input" type="number" required />
+                        <input
+                          className="input"
+                          type="number"
+                          name="goal"
+                          value={goal}
+                          onChange={this.handleChange}
+                        />
                       </div>
                     </div>
                     <div className="field">
@@ -78,15 +122,27 @@ class ContactPage extends Component {
                         Valor do Crédito Pretendido?
                       </label>
                       <div className="control">
-                        <input className="input" type="number" required />
+                        <input
+                          className="input"
+                          type="number"
+                          name="credit"
+                          value={credit}
+                          onChange={this.handleChange}
+                        />
                       </div>
                     </div>
                     <div className="field">
                       <label className="label">
-                        Rendimento liquido mesal do agragado familiar
+                        Rendimento liquido mensal do agragado familiar
                       </label>
                       <div className="control">
-                        <input className="input" type="number" required />
+                        <input
+                          className="input"
+                          type="number"
+                          name="income"
+                          value={income}
+                          onChange={this.handleChange}
+                        />
                       </div>
                     </div>
 
@@ -97,8 +153,8 @@ class ContactPage extends Component {
                     </div>
 
                     <div className="field is-grouped">
-                      <p class="control">
-                        <div class="select">
+                      <div className="control">
+                        <div className="select">
                           <select>
                             <option>Efetivo</option>
                             <option>A prazo</option>
@@ -107,9 +163,9 @@ class ContactPage extends Component {
                             <option>Não se aplica</option>
                           </select>
                         </div>
-                      </p>
-                      <p class="control">
-                        <div class="select">
+                      </div>
+                      <div className="control">
+                        <div className="select">
                           <select>
                             <option>Efetivo</option>
                             <option>A prazo</option>
@@ -118,22 +174,32 @@ class ContactPage extends Component {
                             <option>Não se aplica</option>
                           </select>
                         </div>
-                      </p>
+                      </div>
                     </div>
-                    <p class="help">
+                    <div className="help">
                       Preencha por favor a situação para os dois agregados
-                    </p>
+                    </div>
                     <br />
                     <div className="field">
-                      <p>
+                      <div className="control">
                         Ao avançar está aceitar os Termos e Condições e Politica
                         de Privacidade deste site.
-                      </p>
+                      </div>
                     </div>
 
+                    <label className="checkbox">
+                      <input
+                        type="checkbox"
+                        name="terms"
+                        value={terms}
+                        onChange={this.handleChange}
+                      />{" "}
+                      Aceito os termos
+                    </label>
+
                     <div className="field is-grouped is-grouped-right">
-                      <div class="control ">
-                        <button class="button is-danger">
+                      <div className="control ">
+                        <button className="button is-danger">
                           Enviar para análise
                         </button>
                       </div>
