@@ -15,8 +15,7 @@ class ContactPage extends Component {
     household2: "effective",
     terms: false,
     notification: false,
-    message: "",
-    error: {}
+    message: ""
   };
 
   handleChange = e => {
@@ -65,16 +64,15 @@ class ContactPage extends Component {
       household2,
       terms,
       notification,
-      message,
-      error
+      message
     } = this.state;
 
     return (
       <div className={`${contactStyle.foobar} hero`}>
         <div className="hero-body">
           <div className="container">
-            <div className="column  is-8 is-offset-2">
-              <div className={` box`}>
+            <div className="column is-8 is-offset-2">
+              <div className="box">
                 {notification && (
                   <div className="notification is-danger">
                     <button
@@ -88,12 +86,13 @@ class ContactPage extends Component {
                 <h5 className="subtitle is-6">
                   Todos os campos são de preenchimento obrigatório
                 </h5>
+
                 <form name="contact" onSubmit={this.handleSubmit}>
                   <div className="field">
                     <label className="label">Nome</label>
                     <div className="control">
                       <input
-                        className={`input ${error && "is-danger"}`}
+                        className="input"
                         type="text"
                         placeholder="Manuel António Santos Silva"
                         name="name"
@@ -153,46 +152,57 @@ class ContactPage extends Component {
                       </div>
                     </div>
                   </div>
+
                   <div className="field">
                     <label className="label">
                       Valor atual da Prestação / Renda
                     </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="number"
-                        name="rent"
-                        value={rent}
-                        onChange={this.handleChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="field">
-                    <label className="label">
-                      Valor do Crédito Pretendido?
-                    </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="number"
-                        name="credit"
-                        value={credit}
-                        onChange={this.handleChange}
-                      />
+                    <div className="field-body">
+                      <div className="field is-expanded">
+                        <div className="field has-addons">
+                          <p className="control is-expanded">
+                            <input
+                              className="input"
+                              type="number"
+                              name="rent"
+                              value={rent === 0 ? "" : rent}
+                              placeholder="450"
+                              onChange={this.handleChange}
+                            />
+                          </p>
+                          <p className="control">
+                            <button className="button is-static">€</button>
+                          </p>
+                        </div>
+                        <p className="help has-text-danger">
+                          Caso não exista valor de prestação/renda coloque o
+                          valor <strong className="has-text-danger">0</strong>
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div className="field">
                     <label className="label">
                       Rendimento liquido mensal do agragado familiar
                     </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="number"
-                        name="income"
-                        value={income}
-                        onChange={this.handleChange}
-                      />
+                    <div className="field-body">
+                      <div className="field is-expanded">
+                        <div className="field has-addons">
+                          <div className="control is-expanded">
+                            <input
+                              className="input"
+                              type="number"
+                              name="income"
+                              value={income === 0 ? "" : income}
+                              placeholder="3000"
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                          <p className="control">
+                            <button className="button is-static">€</button>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -234,9 +244,36 @@ class ContactPage extends Component {
                       </div>
                     </div>
                   </div>
+
                   <div className="help">
                     Preencha por favor a situação para os dois agregados
                   </div>
+                  <br />
+                  <div className="field">
+                    <label className="label">
+                      Valor do Crédito Pretendido?
+                    </label>
+                    <div className="field-body">
+                      <div className="field is-expanded">
+                        <div className="field has-addons">
+                          <p className="control is-expanded">
+                            <input
+                              className="input"
+                              type="number"
+                              name="credit"
+                              value={credit === 0 ? "" : credit}
+                              placeholder="100000"
+                              onChange={this.handleChange}
+                            />
+                          </p>
+                          <p className="control">
+                            <button className="button is-static">€</button>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <br />
                   <div className="field">
                     <div className="control">
