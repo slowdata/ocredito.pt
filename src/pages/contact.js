@@ -25,11 +25,7 @@ class ContactPage extends Component {
 
     console.log(">>", name, value);
 
-    this.setState(prev => {
-      const notification = prev.notification && false;
-
-      return { notification, [name]: value, error: false };
-    });
+    this.setState({ notification: false, [name]: value, message: "" });
   };
 
   handleSubmit = e => {
@@ -37,10 +33,27 @@ class ContactPage extends Component {
       const message = "Por favor leia e aceite os termos do nosso site!";
       this.setState({ notification: true, message });
     } else {
-      const fields = Object.keys(this.state);
+      const fields = Object.keys(this.state).filter(
+        f => f !== "terms" && f !== "notification" && f !== "message"
+      );
+      //const { 0: first, length: len, [len - 1]: last } = fields;
+      //console.log(first, last, len, fields);
 
-      const { 0: first, length: len, [len - 1]: last } = fields;
-      console.log(first, last, len, fields);
+      for (let i = 0; i < fields.length; i++) {
+        const f = fields[i];
+        if (typeof this.state[f] === "string" && this.state[f] === "") {
+          const message = `O campo ${f} deve ser preenchido`;
+          this.setState({ message, notification: true });
+        } else if (typeof this.state[f] === "number") {
+          if (f === "rent" && this.state[f] < 0) {
+            const message = `O campo ${f} deve ser maior ou igual a 0`;
+            this.setState({ message, notification: true });
+          } else if (f !== "rent" && this.state[f] > 0) {
+            const message = `O campo ${f} deve ser maior que 0`;
+            this.setState({ message, notification: true });
+          }
+        }
+      }
     }
     console.log(this.state);
 
@@ -48,7 +61,7 @@ class ContactPage extends Component {
   };
 
   handleClick = e => {
-    this.setState({ notification: false });
+    this.setState({ notification: false, message: "" });
   };
 
   render() {
@@ -183,7 +196,7 @@ class ContactPage extends Component {
                   </div>
                   <div className="field">
                     <label className="label">
-                      Rendimento liquido mensal do agragado familiar
+                      Rendimento liquido mensal do agregado familiar
                     </label>
                     <div className="field-body">
                       <div className="field is-expanded">
