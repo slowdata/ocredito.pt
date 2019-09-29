@@ -2,6 +2,18 @@ import React, { Component } from "react";
 
 import contactStyle from "./contact.module.css";
 
+const labels = {
+  name: "Nome",
+  phone: "Telefone",
+  email: "Email",
+  goal: "Finalidade do Crédito",
+  rent: "Valor atual da Prestação / Renda",
+  credit: "Valor do Crédito Pretendido",
+  income: "Rendimento liquido mensal do agregado familiar",
+  household1: "Situação profissional do agregado familiar",
+  household2: "Situação profissional do agregado familiar 2"
+};
+
 class ContactPage extends Component {
   state = {
     name: "",
@@ -15,7 +27,8 @@ class ContactPage extends Component {
     household2: "effective",
     terms: false,
     notification: false,
-    message: ""
+    message: "",
+    error: false
   };
 
   handleChange = e => {
@@ -23,45 +36,76 @@ class ContactPage extends Component {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
 
-    console.log(">>", name, value);
-
-    this.setState({ notification: false, [name]: value, message: "" });
+    this.setState({
+      notification: false,
+      [name]: value,
+      message: "",
+      error: false
+    });
   };
 
   handleSubmit = e => {
-    if (this.state.terms === false) {
+    e.preventDefault();
+
+    const { terms, notification, message, error, ...fields } = this.state;
+
+    if (terms === false) {
       const message = "Por favor leia e aceite os termos do nosso site!";
-      this.setState({ notification: true, message });
+      this.setState({ notification: true, error: true, message });
     } else {
-      const fields = Object.keys(this.state).filter(
-        f => f !== "terms" && f !== "notification" && f !== "message"
-      );
       //const { 0: first, length: len, [len - 1]: last } = fields;
       //console.log(first, last, len, fields);
+      const fieldNames = Object.keys(fields);
 
-      for (let i = 0; i < fields.length; i++) {
-        const f = fields[i];
-        if (typeof this.state[f] === "string" && this.state[f] === "") {
-          const message = `O campo ${f} deve ser preenchido`;
-          this.setState({ message, notification: true });
-        } else if (typeof this.state[f] === "number") {
-          if (f === "rent" && this.state[f] < 0) {
-            const message = `O campo ${f} deve ser maior ou igual a 0`;
-            this.setState({ message, notification: true });
-          } else if (f !== "rent" && this.state[f] > 0) {
-            const message = `O campo ${f} deve ser maior que 0`;
-            this.setState({ message, notification: true });
-          }
+      const checkedFields = fieldNames.map(f => {
+        const value = fields[f];
+        if (typeof value === "string") {
+          if (value === "") return { [f]: true };
+          return { [f]: false };
+        } else {
+          if (value <= 0) return { [f]: true };
+          return { [f]: false };
         }
+      });
+
+      const errors = checkedFields
+        .filter(f => Object.values(f).includes(true))
+        .map(err => labels[Object.keys(err)[0]]);
+
+      if (errors.length === 1) {
+        const message = `O campo - ${errors[0]} -deve ser preenchido`;
+        this.setState({ message, notification: true, error: true });
+      } else if (errors.length > 1) {
+        const message = `Os campos - ${errors.join(
+          ", "
+        )} - devem ser preenchidos`;
+        this.setState({ message, notification: true, error: true });
+      } else {
+        fetch("https://polar-basin-02862.herokuapp.com/api/email/ocredito", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(fields)
+        })
+          .then(res => {
+            if (res.status === 201) {
+              const message = `${fields.name} obrigado pelo seu pedido. Entraremos em contacto o mais breve que nos for possivel.`;
+              this.setState({ notification: true, message, erro: false });
+            } else {
+              const message =
+                "Ocorreu erro ao submeter o pedido. Não exite em entrar em contacto connosco.";
+              this.setState({ notification: true, message, error: true });
+            }
+          })
+          .catch(error => {
+            const message = error.message;
+            this.setState({ notification: true, message, error: true });
+          });
       }
     }
-    console.log(this.state);
-
-    e.preventDefault();
   };
 
   handleClick = e => {
-    this.setState({ notification: false, message: "" });
+    this.setState({ notification: false, message: "", error: false });
   };
 
   render() {
@@ -77,7 +121,8 @@ class ContactPage extends Component {
       household2,
       terms,
       notification,
-      message
+      message,
+      error
     } = this.state;
 
     return (
@@ -87,7 +132,11 @@ class ContactPage extends Component {
             <div className="column is-8 is-offset-2">
               <div className="box">
                 {notification && (
-                  <div className="notification is-danger">
+                  <div
+                    className={`notification ${
+                      error ? "is-danger" : "is-success"
+                    }`}
+                  >
                     <button
                       className="delete"
                       onClick={this.handleClick}
@@ -102,7 +151,7 @@ class ContactPage extends Component {
 
                 <form name="contact" onSubmit={this.handleSubmit}>
                   <div className="field">
-                    <label className="label">Nome</label>
+                    <label className="label">{labels["name"]}</label>
                     <div className="control">
                       <input
                         className="input"
@@ -116,7 +165,7 @@ class ContactPage extends Component {
                     <p className="help">Nome completo</p>
                   </div>
                   <div className="field">
-                    <label className="label">Telemóvel</label>
+                    <label className="label">{labels["phone"]}</label>
                     <div className="control">
                       <input
                         className="input"
@@ -130,7 +179,7 @@ class ContactPage extends Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Email</label>
+                    <label className="label">{labels["email"]}</label>
                     <div className="control">
                       <input
                         className="input"
@@ -143,7 +192,7 @@ class ContactPage extends Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Finalidade do Crédito</label>
+                    <label className="label">{labels["goal"]}</label>
                     <div className="control">
                       <div className="select">
                         <select
@@ -167,9 +216,7 @@ class ContactPage extends Component {
                   </div>
 
                   <div className="field">
-                    <label className="label">
-                      Valor atual da Prestação / Renda
-                    </label>
+                    <label className="label">{labels["rent"]}</label>
                     <div className="field-body">
                       <div className="field is-expanded">
                         <div className="field has-addons">
@@ -195,9 +242,7 @@ class ContactPage extends Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">
-                      Rendimento liquido mensal do agregado familiar
-                    </label>
+                    <label className="label">{labels["income"]}</label>
                     <div className="field-body">
                       <div className="field is-expanded">
                         <div className="field has-addons">
@@ -220,9 +265,7 @@ class ContactPage extends Component {
                   </div>
 
                   <div className="field">
-                    <label className="label">
-                      Situação profissional do agregado familiar?
-                    </label>
+                    <label className="label">{labels["household1"]}</label>
                   </div>
 
                   <div className="field is-grouped">
@@ -263,9 +306,7 @@ class ContactPage extends Component {
                   </div>
                   <br />
                   <div className="field">
-                    <label className="label">
-                      Valor do Crédito Pretendido?
-                    </label>
+                    <label className="label">{labels["credit"]}</label>
                     <div className="field-body">
                       <div className="field is-expanded">
                         <div className="field has-addons">
