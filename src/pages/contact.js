@@ -52,7 +52,7 @@ class ContactPage extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { terms, notification, message, error, ...fields } = this.state;
+    const { terms, notification, message, error, modalTerms, modalPrivacy, ...fields } = this.state;
 
     if (terms === false) {
       const message = "Por favor leia e aceite os termos do nosso site!";
