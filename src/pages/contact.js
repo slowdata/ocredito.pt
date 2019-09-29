@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import Terms from "../components/terms";
+import Privacy from "../components/privacy";
+
 import contactStyle from "./contact.module.css";
 
 const labels = {
@@ -28,7 +31,9 @@ class ContactPage extends Component {
     terms: false,
     notification: false,
     message: "",
-    error: false
+    error: false,
+    modalTerms: false,
+    modalPrivacy: false
   };
 
   handleChange = e => {
@@ -73,12 +78,14 @@ class ContactPage extends Component {
         .map(err => labels[Object.keys(err)[0]]);
 
       if (errors.length === 1) {
-        const message = `O campo - ${errors[0]} -deve ser preenchido`;
+        const message = `O campo - ${
+          errors[0]
+        } - deve ser preenchido ou o valor é errado.`;
         this.setState({ message, notification: true, error: true });
       } else if (errors.length > 1) {
         const message = `Os campos - ${errors.join(
           ", "
-        )} - devem ser preenchidos`;
+        )} - devem ser preenchidos ou valor é errado.`;
         this.setState({ message, notification: true, error: true });
       } else {
         fetch("https://polar-basin-02862.herokuapp.com/api/email/ocredito", {
@@ -108,6 +115,24 @@ class ContactPage extends Component {
     this.setState({ notification: false, message: "", error: false });
   };
 
+  handleModalPrivacy = () =>
+    this.setState(prevState => {
+      console.log(this.state.modal);
+
+      return {
+        modalPrivacy: !prevState.modalPrivacy
+      };
+    });
+
+  handleModalTerms = () =>
+    this.setState(prevState => {
+      console.log(this.state.modal);
+
+      return {
+        modalTerms: !prevState.modalTerms
+      };
+    });
+
   render() {
     const {
       name,
@@ -122,11 +147,13 @@ class ContactPage extends Component {
       terms,
       notification,
       message,
-      error
+      error,
+      modalTerms,
+      modalPrivacy
     } = this.state;
 
     return (
-      <div className={`${contactStyle.foobar} hero`}>
+      <div className={`${contactStyle.fundopink} hero`}>
         <div className="hero-body">
           <div className="container">
             <div className="column is-8 is-offset-2">
@@ -268,35 +295,43 @@ class ContactPage extends Component {
                     <label className="label">{labels["household1"]}</label>
                   </div>
 
-                  <div className="field is-grouped">
-                    <div className="control">
-                      <div className="select">
-                        <select
-                          name="household1"
-                          value={household1}
-                          onChange={this.handleChange}
-                        >
-                          <option value="effective">Efetivo</option>
-                          <option value="term">A prazo</option>
-                          <option value="retired">Reformado</option>
-                          <option value="unemployed">Desempregado</option>
-                          <option value="other">Não se aplica</option>
-                        </select>
+                  <div className="columns">
+                    <div className="column is-6">
+                      <div className="field">
+                        <div className="control is-expanded">
+                          <div className="select is-fullwidth">
+                            <select
+                              name="household1"
+                              value={household1}
+                              onChange={this.handleChange}
+                            >
+                              <option value="effective">Efetivo</option>
+                              <option value="term">A prazo</option>
+                              <option value="retired">Reformado</option>
+                              <option value="unemployed">Desempregado</option>
+                              <option value="other">Não se aplica</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="control">
-                      <div className="select">
-                        <select
-                          name="household2"
-                          value={household2}
-                          onChange={this.handleChange}
-                        >
-                          <option value="effective">Efetivo</option>
-                          <option value="term">A prazo</option>
-                          <option value="retired">Reformado</option>
-                          <option value="unemployed">Desempregado</option>
-                          <option value="other">Não se aplica</option>
-                        </select>
+                    <div className="column is-left">
+                      <div className="field">
+                        <div className="control is-expanded">
+                          <div className="select is-fullwidth">
+                            <select
+                              name="household2"
+                              value={household2}
+                              onChange={this.handleChange}
+                            >
+                              <option value="effective">Efetivo</option>
+                              <option value="term">A prazo</option>
+                              <option value="retired">Reformado</option>
+                              <option value="unemployed">Desempregado</option>
+                              <option value="other">Não se aplica</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -331,8 +366,8 @@ class ContactPage extends Component {
                   <br />
                   <div className="field">
                     <div className="control">
-                      Por favor leia e aceite os Termos e Condições e Politica
-                      de Privacidade deste site para poder avançar.
+                      Ao avançar está aceitar os Termos e Condições e Politica
+                      de Privacidade deste site.
                     </div>
                   </div>
 
@@ -343,7 +378,7 @@ class ContactPage extends Component {
                       checked={terms}
                       onChange={this.handleChange}
                     />{" "}
-                    Aceito os termos
+                    Aceitar
                   </label>
 
                   <div className="field is-grouped is-grouped-right">
@@ -358,6 +393,27 @@ class ContactPage extends Component {
             </div>
           </div>
         </div>
+        <div className="hero-foot">
+          <div className="content has-text-centered">
+            <button className="button is-text" onClick={this.handleModalTerms}>
+              Termos e Condições
+            </button>
+            <button
+              className="button is-text"
+              onClick={this.handleModalPrivacy}
+            >
+              Política de Privacidade
+            </button>
+          </div>
+        </div>
+        <Terms
+          active={modalTerms ? "is-active" : ""}
+          handleModal={this.handleModalTerms}
+        />
+        <Privacy
+          active={modalPrivacy ? "is-active" : ""}
+          handleModal={this.handleModalPrivacy}
+        />
       </div>
     );
   }
