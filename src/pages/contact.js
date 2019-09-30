@@ -14,7 +14,8 @@ const labels = {
   credit: "Valor do Crédito Pretendido",
   income: "Rendimento liquido mensal do agregado familiar",
   household1: "Situação profissional do agregado familiar",
-  household2: "Situação profissional do agregado familiar 2"
+  household2: "Situação profissional do agregado familiar 2",
+  obs: "Observações"
 };
 
 class ContactPage extends Component {
@@ -28,6 +29,7 @@ class ContactPage extends Component {
     income: 0,
     household1: "effective",
     household2: "effective",
+    obs: "",
     terms: false,
     notification: false,
     message: "",
@@ -52,7 +54,15 @@ class ContactPage extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { terms, notification, message, error, modalTerms, modalPrivacy, ...fields } = this.state;
+    const {
+      terms,
+      notification,
+      message,
+      error,
+      modalTerms,
+      modalPrivacy,
+      ...fields
+    } = this.state;
 
     if (terms === false) {
       const message = "Por favor leia e aceite os termos do nosso site!";
@@ -65,7 +75,7 @@ class ContactPage extends Component {
       const checkedFields = fieldNames.map(f => {
         const value = fields[f];
         if (typeof value === "string") {
-          if (value === "") return { [f]: true };
+          if (value === "" && f !== "obs") return { [f]: true };
           return { [f]: false };
         } else {
           if (value <= 0) return { [f]: true };
@@ -144,6 +154,7 @@ class ContactPage extends Component {
       income,
       household1,
       household2,
+      obs,
       terms,
       notification,
       message,
@@ -315,7 +326,7 @@ class ContactPage extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="column is-left">
+                    <div className="column">
                       <div className="field">
                         <div className="control is-expanded">
                           <div className="select is-fullwidth">
@@ -335,11 +346,11 @@ class ContactPage extends Component {
                       </div>
                     </div>
                   </div>
-
                   <div className="help">
                     Preencha por favor a situação para os dois agregados
                   </div>
                   <br />
+
                   <div className="field">
                     <label className="label">{labels["credit"]}</label>
                     <div className="field-body">
@@ -360,6 +371,23 @@ class ContactPage extends Component {
                           </p>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label htmlFor="" className="label">
+                      {labels["obs"]}
+                    </label>
+                    <div className="control">
+                      <textarea
+                        name="obs"
+                        id=""
+                        cols="30"
+                        rows="5"
+                        className="textarea"
+                        placeholder="É possivel escrever neste campo até 5 linhas..."
+                        value={obs}
+                        onChange={this.handleChange}
+                      />
                     </div>
                   </div>
 

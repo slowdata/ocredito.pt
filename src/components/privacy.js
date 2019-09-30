@@ -15,23 +15,28 @@ const Privacy = ({ active, handleModal }) => (
               éticas e legais em vigor definidas pelo Regulamento Geral sobre a
               Proteção de Dados (RGPD), Regulamento (UE) 2016/679 do Parlamento
               Europeu e do Conselho, de 27 de abril de 2016. A{" "}
-              <strong>DS Crédito Vila Nova de Gaia</strong> (Molécula Decimal
-              Unipessoal, Lda.) respeita a privacidade dos seus clientes. Todos
-              os dados recolhidos sobre os clientes servem para obter informação
-              sobre os seus gostos e também para promover os nossos serviços.
+              <span className="has-text-weight-bold">
+                DS Crédito Vila Nova de Gaia
+              </span>{" "}
+              (Molécula Decimal Unipessoal, Lda.) respeita a privacidade dos
+              seus clientes. Todos os dados recolhidos sobre os clientes servem
+              para obter informação sobre os seus gostos e também para promover
+              os nossos serviços.
             </p>
             <p>
-              <strong>
+              <span className="has-text-weight-bold">
                 Não alugamos ou vendemos as bases de dados dos nossos clientes a
                 terceiros.
-              </strong>
+              </span>{" "}
               Caso tenha alguma dúvida sobre a nossa política de privacidade,
               poderá entrar em contacto com o nosso serviço de apoio ao cliente.
               O cliente de exigir a qualquer momento que alteremos a forma como
               utilizamos a sua informação pessoal.
             </p>
             <p>
-              <strong>Que tipo de informação recolhemos?</strong>
+              <span className="has-text-weight-bold">
+                Que tipo de informação recolhemos?
+              </span>{" "}
               As informações pessoais recolhidas apenas serão divulgadas dentro
               do nosso grupo e/ou junto dos parceiros/clientes para uso na
               internet. Estas informações pessoais que recolhemos serão usadas
@@ -72,15 +77,16 @@ const Privacy = ({ active, handleModal }) => (
             <p>
               O utilizador beneficia de um direito de acesso, de retificação, de
               atualização e de supressão das informações que lhe diz respeito
-              que pode exercer contactando: <strong>vngaia@dscredito.pt</strong>
+              que pode exercer contactando:{" "}
+              <span className="has-text-weight-bold">vngaia@dscredito.pt</span>
             </p>
             <br />
             <br />
             <p>
-              <strong>Política de Cookies</strong>
+              <span className="has-text-weight-bold">Política de Cookies</span>
             </p>
             <p>
-              <strong>O que são os cookies</strong>
+              <span className="has-text-weight-bold">O que são os cookies</span>
             </p>
             <p>
               Como é prática comum com quase todos os sites profissionais, este
@@ -95,7 +101,9 @@ const Privacy = ({ active, handleModal }) => (
               HTTP.
             </p>
             <p>
-              <strong>Como usamos os cookies</strong>
+              <span className="has-text-weight-bold">
+                Como usamos os cookies
+              </span>
             </p>
             <p>
               Usamos cookies por uma variedade de razões detalhadas abaixo.
@@ -107,7 +115,7 @@ const Privacy = ({ active, handleModal }) => (
               pretende usar.
             </p>
             <p>
-              <strong>Desativando cookies</strong>
+              <span className="has-text-weight-bold">Desativando cookies</span>
             </p>
             <p>
               Pode evitar a ativação de cookies, alterando as configurações do
@@ -119,31 +127,36 @@ const Privacy = ({ active, handleModal }) => (
             </p>
             <p>Os Cookies que usamos</p>
             <p>
-              <strong>Cookies analíticos</strong>: São utilizados para efeitos
-              de criação e análise de estatísticas, no sentido de melhorar o
-              funcionamento do website e otimizar as vendas, obter informações
-              sobre o uso do site, para que possamos ajustá-lo para proporcionar
-              uma melhor experiência ao utilizador.
+              <span className="has-text-weight-bold">Cookies analíticos</span>
+              : São utilizados para efeitos de criação e análise de
+              estatísticas, no sentido de melhorar o funcionamento do website e
+              otimizar as vendas, obter informações sobre o uso do site, para
+              que possamos ajustá-lo para proporcionar uma melhor experiência ao
+              utilizador.
             </p>
             <p>
               Segurança: Utilizamos o serviço CloudFlare, seu cookie identifica
               o tráfego confiável da web.
             </p>
             <p>
-              <strong>Cookies de funcionalidade</strong>: Cookies que são
-              necessários para que o site funcione apropriadamente. Guardam as
-              preferências do utilizador relativamente à utilização do site,
-              para que não seja necessário voltar a configurar o site cada vez
-              que o visita.
+              <span className="has-text-weight-bold">
+                Cookies de funcionalidade
+              </span>
+              : Cookies que são necessários para que o site funcione
+              apropriadamente. Guardam as preferências do utilizador
+              relativamente à utilização do site, para que não seja necessário
+              voltar a configurar o site cada vez que o visita.
             </p>
             <p>
-              <strong>Publicidade e marketing</strong>: Informações recolhidas
-              para o envio de e-mails ou notificações, como e-mail marketing,
-              recuperação de carrinho. Além de poder exibir publicidade baseada
-              nos dados recolhidos.
+              <span className="has-text-weight-bold">
+                Publicidade e marketing
+              </span>
+              : Informações recolhidas para o envio de e-mails ou notificações,
+              como e-mail marketing, recuperação de carrinho. Além de poder
+              exibir publicidade baseada nos dados recolhidos.
             </p>
             <p>
-              <strong>Mais Informações</strong>
+              <span className="has-text-weight-bold">Mais Informações</span>
             </p>
             <p>
               Esperamos que tenha ficado esclarecido e, como foi mencionado
