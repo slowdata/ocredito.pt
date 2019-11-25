@@ -1,9 +1,17 @@
-module.export = {
+module.exports = {
   plugins: [
     {
-      resolve: "gatsby-plugin-typography",
+      resolve: `gatsby-plugin-postcss`,
       options: {
-        pathToConfigModule: "src/util/typography"
+        postCssPlugins: [require(`tailwindcss`)]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: false,
+        develop: false,
+        tailwind: true
       }
     }
   ]
