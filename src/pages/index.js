@@ -13,7 +13,7 @@ import { Link } from "gatsby";
 
 class indexPage extends Component {
   state = {
-    leftMenu: true
+    leftMenu: false
   };
   handleClick = () => {
     this.setState(prev => ({ leftMenu: !prev.leftMenu }));
@@ -22,16 +22,19 @@ class indexPage extends Component {
     const { leftMenu } = this.state;
     return (
       <>
-        <header>
-          <div className="py-1 flex justify-between">
+        <header
+          className={`${leftMenu ? "bg-pink-200" : ""}`}
+          style={{ transition: "all 0.5s ease-out" }}
+        >
+          <div className="py-2 px-4 flex justify-between">
             <Link className="ml-2 flex items-center focus:outline-none" to="/">
               <span
                 className="w-10 h-10 flex items-center justify-center 
               rounded-full text-white font-semibold text-xl bg-pink-600"
               >
-                $
+                €
               </span>
-              <span className="pl-1 text-lg text-pink-800">credito.pt</span>
+              <span className="pl-1 text-xl text-pink-800 ">credito.pt</span>
             </Link>
             <button
               className="mr-4 rounded hover:bg-pink-200 focus:outline-none"
@@ -39,7 +42,7 @@ class indexPage extends Component {
             >
               <div
                 className={`${
-                  !leftMenu ? "hidden" : ""
+                  leftMenu ? "hidden" : ""
                 } w-10 h-10 px-2 flex flex-col justify-center 
           items-center`}
               >
@@ -58,9 +61,10 @@ class indexPage extends Component {
               </div>
               <div
                 className={`${
-                  leftMenu ? "hidden" : ""
-                } w-10 h-10 px-2 flex justify-center 
-          items-center`}
+                  !leftMenu
+                    ? "hidden"
+                    : "w-10 h-10 px-2 flex justify-center items-center"
+                } `}
                 styles={{ transition: "all 0.5s ease-out" }}
               >
                 <svg className="w-12 h-12" viewBox="0 0 40 40" fill="none">
@@ -76,11 +80,42 @@ class indexPage extends Component {
               </div>
             </button>
           </div>
+          {/* <nav
+            className={`${leftMenu ? "" : "hidden"} 
+              flex flex-col items-center
+            `}
+          >
+            <ul className="pt-10 text-pink-800 font-semibold text-center">
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li className="pt-2">
+                <Link>Artigos</Link>
+              </li>
+              <li className="pt-2">
+                <Link>Contactos</Link>
+              </li>
+            </ul>
+          </nav> */}
         </header>
-        <div
-          className={`${leftMenu ? "hidden" : null} min-h-screen bg-gray-800`}
+        <nav
+          className={`${
+            !leftMenu ? "opacity-0" : "opacity-1"
+          } min-h-screen bg-pink-200`}
           style={{ transition: "all 0.5s ease-out" }}
-        ></div>
+        >
+          <ul className="pt-10 text-pink-800 font-semibold text-center">
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li className="pt-2">
+              <Link>Artigos</Link>
+            </li>
+            <li className="pt-2">
+              <Link>Contactos</Link>
+            </li>
+          </ul>
+        </nav>
       </>
     );
   }
