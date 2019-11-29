@@ -87,7 +87,8 @@ class indexPage extends Component {
             </button>
           </div>
         </header>
-        <Nav showMenu={leftMenu} className="bg-grey-900" />
+
+        <Nav showMenu={leftMenu} />
       </>
     );
   }
