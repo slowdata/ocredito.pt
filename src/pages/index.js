@@ -28,7 +28,7 @@ class indexPage extends Component {
           className={`${leftMenu ? "bg-pink-200" : ""}`}
           style={{ transition: "all 0.5s ease-out" }}
         >
-          <div className="py-2 px-4 flex justify-between">
+          <div className="py-3 px-4 flex justify-between">
             <div>
               <Link
                 className="ml-2 flex items-center focus:outline-none"
@@ -43,48 +43,67 @@ class indexPage extends Component {
                 <span className="pl-1 text-xl text-pink-800 ">credito.pt</span>
               </Link>
             </div>
-            <button
-              className="sm:md:lg:xl:hidden mr-4 rounded hover:bg-pink-200 focus:outline-none"
-              onClick={() => this.handleClick()}
-            >
-              <div
-                className={`${
-                  leftMenu ? "hidden" : ""
-                } w-10 h-10 px-2 flex flex-col justify-center 
+            <div>
+              <nav className="py-2 mr-3 text-pink-600 hidden md:block ">
+                <Link
+                  className="p-2 mr-2 rounded hover:bg-pink-200"
+                  to="/about"
+                >
+                  Sobre
+                </Link>
+                <Link
+                  className="p-2 mr-2 rounded hover:bg-pink-200"
+                  to="/Artigos"
+                >
+                  Artigos
+                </Link>
+                <Link className="p-2 rounded hover:bg-pink-200" to="/about">
+                  Contactos
+                </Link>
+              </nav>
+              <button
+                className="block md:hidden lg:hidden xl:hidden mr-4 rounded hover:bg-pink-200 focus:outline-none"
+                onClick={() => this.handleClick()}
+              >
+                <div
+                  className={`${
+                    leftMenu ? "hidden" : ""
+                  } w-10 h-10 px-2 flex flex-col justify-center 
           items-center`}
-              >
-                <span
-                  id="btn-1"
-                  className="w-full px-3 border border-pink-600"
-                ></span>
-                <span
-                  id="btn-2"
-                  className="mt-1 w-full px-3 border border-pink-600"
-                ></span>
-                <span
-                  id="btn-3"
-                  className="mt-1 w-full px-3 border border-pink-600"
-                ></span>
-              </div>
-              <div
-                className={`${
-                  !leftMenu
-                    ? "hidden"
-                    : "w-10 h-10 px-2 flex justify-center items-center"
-                } `}
-              >
-                <svg className="w-12 h-12" viewBox="0 0 40 40" fill="none">
-                  <path
-                    className="text-pink-600"
-                    d="M 10,10 L 30,30 M 30,10 L 10,30"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </button>
+                >
+                  <span
+                    id="btn-1"
+                    className="w-full px-3 border border-pink-600"
+                  ></span>
+                  <span
+                    id="btn-2"
+                    className="mt-1 w-full px-3 border border-pink-600"
+                  ></span>
+                  <span
+                    id="btn-3"
+                    className="mt-1 w-full px-3 border border-pink-600"
+                  ></span>
+                </div>
+                <div
+                  className={`${
+                    !leftMenu
+                      ? "hidden"
+                      : "w-10 h-10 px-2 flex justify-center items-center"
+                  } `}
+                >
+                  <svg className="w-12 h-12" viewBox="0 0 40 40" fill="none">
+                    <path
+                      className="text-pink-600"
+                      d="M 10,10 L 30,30 M 30,10 L 10,30"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div>
           </div>
         </header>
 

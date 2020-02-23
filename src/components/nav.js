@@ -11,7 +11,7 @@ const Nav = ({ showMenu, className }) =>
     >
       <ul className="pt-10 text-pink-800 font-semibold text-center">
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/about">Sobre</Link>
         </li>
         <li className="pt-2">
           <Link>Artigos</Link>
