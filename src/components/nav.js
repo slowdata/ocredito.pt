@@ -1,24 +1,29 @@
 import React from "react";
 import { Link } from "gatsby";
 
-const Nav = ({ showMenu, className }) => (
+const Nav = ({ showMenu }) => (
   <nav
-    className={`${className} ${
-      !showMenu ? "opacity-0" : "opacity-1"
-    } min-h-screen bg-pink-200`}
+    className={`px-6 pt-6 ${!showMenu ? "hidden" : "visible"}`}
     style={{ transition: "all 0.5s ease-out" }}
   >
-    <ul className="pt-10 text-pink-800 font-semibold text-center">
-      <li>
-        <Link to="/about">Sobre</Link>
-      </li>
-      <li className="pt-2">
-        <Link to="/artigos">Artigos</Link>
-      </li>
-      <li className="pt-2">
-        <Link to="/contacts">Contactos</Link>
-      </li>
-    </ul>
+    <Link
+      className=" block px-3 py-1 text-center font-semibold text-pink-600 hover:bg-pink-300 rounded"
+      to="/about"
+    >
+      Sobre
+    </Link>
+    <Link
+      className="mt-1 block px-3 py-1 text-center font-semibold text-pink-600 hover:bg-pink-300 rounded"
+      to="/artigos"
+    >
+      Artigos
+    </Link>
+    <Link
+      className=",t-1 block px-3 py-1 text-center font-semibold text-pink-600 hover:bg-pink-300 rounded"
+      to="/contacts"
+    >
+      Contactos
+    </Link>
   </nav>
 );
 
