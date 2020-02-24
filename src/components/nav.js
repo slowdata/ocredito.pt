@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 const Nav = ({ showMenu }) => (
   <nav
-    className={`px-6 pt-6 ${!showMenu ? "hidden" : "visible"}`}
+    className={`mb-2 px-6 pb-4 pt-6 ${!showMenu ? "hidden" : "visible"}`}
     style={{ transition: "all 0.5s ease-out" }}
   >
     <Link

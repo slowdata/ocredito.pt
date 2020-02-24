@@ -7,7 +7,7 @@ import Nav from "./nav";
 const Header = ({ handleMenu, menuOpen }) => (
   <>
     <header
-      className={` ${menuOpen ? "bg-pink-200 h-screen" : ""}`}
+      className={`${menuOpen ? "bg-pink-200 " : ""}`}
       style={{ transition: "all 0.3s ease-out" }}
     >
       <div className="py-3 px-4 flex justify-between">
@@ -19,11 +19,13 @@ const Header = ({ handleMenu, menuOpen }) => (
             >
               €
             </span>
-            <span className="pl-1 text-xl text-pink-600">credito.pt</span>
+            <span className="px-1 text-xl hover:text-pink-400 text-pink-600">
+              credito.pt
+            </span>
           </Link>
         </div>
-        <div>
-          <nav className="py-2 text-pink-600 font-semibold hidden sm:block">
+        <div className="mr-3 flex items-center">
+          <nav className=" text-pink-600 font-semibold hidden sm:block">
             <Link
               className="p-2 mr-2 rounded-full hover:bg-pink-200"
               to="/about"

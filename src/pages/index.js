@@ -26,6 +26,9 @@ class indexPage extends Component {
     return (
       <>
         <Header handleMenu={this.handleClick} menuOpen={menuOpen} />
+        <main>
+          <h1 className="text-4xl">Coisas...</h1>
+        </main>
       </>
     );
   }
