@@ -7,7 +7,7 @@ import Nav from "./nav";
 const Header = ({ handleMenu, menuOpen }) => (
   <>
     <header
-      className={`${menuOpen ? "bg-pink-200 " : ""}`}
+      className={` ${menuOpen ? "bg-pink-200 h-screen" : ""}`}
       style={{ transition: "all 0.3s ease-out" }}
     >
       <div className="py-3 px-4 flex justify-between">
