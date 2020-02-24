@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    title: "O Credito"
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-postcss`,

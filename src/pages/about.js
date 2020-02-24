@@ -1,12 +1,13 @@
 import React from "react";
 
+import Layout from "../components/layout";
+
 const aboutPage = () => {
   return (
-    <div>
-      <h1 className="text-6xl flex justify-center items-center">
-        Brevemente...
-      </h1>
-    </div>
+    <Layout>
+      <h1 className="text-6xl text-center">Brevemente...</h1>
+      <h3 className="text-xl text-center">Sobre</h3>
+    </Layout>
   );
 };
 

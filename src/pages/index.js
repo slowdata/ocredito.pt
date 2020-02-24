@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-import Header from "../components/header";
+import Layout from "../components/layout";
 
 //import Container from "../components/container";
 
@@ -12,26 +12,10 @@ import Header from "../components/header";
 //   phone: "+351-937 384 062"
 // };
 
-class indexPage extends Component {
-  state = {
-    menuOpen: false
-  };
-
-  handleClick = () => {
-    this.setState(prev => ({ menuOpen: !prev.menuOpen }));
-  };
-
-  render() {
-    const { menuOpen } = this.state;
-    return (
-      <>
-        <Header handleMenu={this.handleClick} menuOpen={menuOpen} />
-        <main className={menuOpen ? "hidden" : ""}>
-          <h1 className="text-4xl">Coisas...</h1>
-        </main>
-      </>
-    );
-  }
-}
+const indexPage = () => (
+  <Layout>
+    <h1 className="text-4xl">Coisas...</h1>
+  </Layout>
+);
 
 export default indexPage;
