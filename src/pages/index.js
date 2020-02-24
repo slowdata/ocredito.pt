@@ -40,7 +40,7 @@ class indexPage extends Component {
                 >
                   €
                 </span>
-                <span className="pl-1 text-xl text-pink-800 ">credito.pt</span>
+                <span className="pl-1 text-xl text-pink-600 ">credito.pt</span>
               </Link>
             </div>
             <div>
@@ -53,11 +53,11 @@ class indexPage extends Component {
                 </Link>
                 <Link
                   className="p-2 mr-2 rounded hover:bg-pink-200"
-                  to="/Artigos"
+                  to="/artigos"
                 >
                   Artigos
                 </Link>
-                <Link className="p-2 rounded hover:bg-pink-200" to="/about">
+                <Link className="p-2 rounded hover:bg-pink-200" to="/contacts">
                   Contactos
                 </Link>
               </nav>
