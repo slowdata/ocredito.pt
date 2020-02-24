@@ -19,7 +19,7 @@ class Layout extends Component {
     return (
       <>
         <header
-          className={` ${menuOpen ? "h-screen bg-pink-200 " : ""}`}
+          className={`shadow ${menuOpen ? "h-screen bg-pink-200 " : ""}`}
           style={{ transition: "all 0.3s ease-out" }}
         >
           <div className="py-3 px-4 flex justify-between">
@@ -43,7 +43,7 @@ class Layout extends Component {
               <nav className=" text-pink-600 font-semibold hidden sm:block">
                 <Link
                   className="p-2 mr-2 rounded-full hover:bg-pink-200"
-                  to="/about"
+                  to="/sobre"
                 >
                   Sobre
                 </Link>
@@ -55,9 +55,9 @@ class Layout extends Component {
                 </Link>
                 <Link
                   className="p-2 rounded-full hover:bg-pink-200"
-                  to="/contact"
+                  to="/contactos"
                 >
-                  Contacto
+                  Contactos
                 </Link>
               </nav>
               <button

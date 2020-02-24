@@ -10,7 +10,7 @@ const Nav = ({ showMenu }) => (
   >
     <Link
       className=" block px-3 py-1 text-center font-semibold text-pink-600 hover:bg-pink-300 rounded"
-      to="/about"
+      to="/sobre"
     >
       Sobre
     </Link>
@@ -22,9 +22,9 @@ const Nav = ({ showMenu }) => (
     </Link>
     <Link
       className=",t-1 block px-3 py-1 text-center font-semibold text-pink-600 hover:bg-pink-300 rounded"
-      to="/contact"
+      to="/contactos"
     >
-      Contacto
+      Contactos
     </Link>
   </nav>
 );
