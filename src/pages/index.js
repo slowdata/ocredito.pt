@@ -14,7 +14,13 @@ import Layout from "../components/layout";
 
 const indexPage = () => (
   <Layout>
-    <h1 className="text-4xl">Coisas...</h1>
+    <h1 className="mt-4 text-2xl text-center text-gray-800 font-semibold">
+      Uma equipa especializada, pronta para o ajudar.
+    </h1>
+    <p>
+      Esclarecer e ajudamos nas suas dúvidas financeiras. Crédito habitação,
+      automóvel, pessoal ou transferências. Garantimos as melhores condições.
+    </p>
   </Layout>
 );
 

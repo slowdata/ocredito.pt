@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 
 import Nav from "./nav";
 
@@ -16,26 +16,37 @@ class Layout extends Component {
     const { children } = this.props;
     const { menuOpen } = this.state;
 
+    const data = useStaticQuery(graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `);
+
     return (
       <>
+        {data}
         <header
-          className={`shadow ${menuOpen ? "h-screen bg-pink-200 " : ""}`}
+          className={` ${menuOpen ? "h-screen bg-pink-200 " : ""}`}
           style={{ transition: "all 0.3s ease-out" }}
         >
-          <div className="py-3 px-4 flex justify-between">
+          <div className="py-2 px-4 flex justify-between">
             <div>
               <Link
                 className="ml-2 flex items-center focus:outline-none"
                 to="/"
               >
                 <span
-                  className="w-10 h-10 flex items-center justify-center 
+                  className="w-8 h-8 flex items-center justify-center 
                 rounded-full text-white font-semibold text-xl bg-pink-600"
                 >
                   €
                 </span>
                 <span className="px-1 text-xl hover:text-pink-400 text-pink-600">
-                  credito.pt
+                  credito
                 </span>
               </Link>
             </div>
