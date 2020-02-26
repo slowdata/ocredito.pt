@@ -14,12 +14,21 @@ import Layout from "../components/layout";
 
 const indexPage = () => (
   <Layout>
-    <h1 className="mt-4 text-2xl text-center text-gray-800 font-semibold">
-      Uma equipa especializada, pronta para o ajudar.
+    <h1 className="max-w-sm mx-auto text-2xl leading-snug font-semibold text-gray-900">
+      <span className="mr-1 inline-flex relative text-white ">
+        <span
+          aria-hidden
+          className="absolute inset-0 bg-pink-600"
+          style={{ transform: "skewY(-.8deg) scaleX(1.04)" }}
+        ></span>
+        <span className="relative">Somos uma equipa</span>
+      </span>
+      especializada pronta para o ajudar a vencer
     </h1>
-    <p>
-      Esclarecer e ajudamos nas suas dúvidas financeiras. Crédito habitação,
-      automóvel, pessoal ou transferências. Garantimos as melhores condições.
+    <p className="mt-4 text-gray-700 text-center">
+      Informarmos e esclarecemos as suas dúvidas financeiras. Crédito habitação,
+      automóvel, pessoal e transferências de crédito. Ajudamos a conseguir as
+      melhores condições para os seus projectos
     </p>
   </Layout>
 );
