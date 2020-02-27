@@ -25,7 +25,7 @@ const indexPage = () => (
       </span>
       especializada pronta para o ajudar a vencer
     </h1>
-    <p className="mt-4 text-gray-700 text-sm text-center">
+    <p className="mt-4 text-gray-700 text-center">
       Aconcelhamos e esclarecemos as suas dúvidas financeiras. Crédito
       habitação, automóvel, pessoal e transferências de crédito. Ajudamos a
       conseguir as melhores condições para os seus projectos
