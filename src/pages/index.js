@@ -21,14 +21,14 @@ const indexPage = () => (
           className="absolute inset-0 bg-pink-600"
           style={{ transform: "skewY(-.8deg) scaleX(1.04)" }}
         ></span>
-        <span className="relative">Somos uma equipa</span>
+        <span className="relative">Uma equipa</span>
       </span>
       especializada pronta para o ajudar a vencer
     </h1>
-    <p className="mt-4 text-gray-700 text-center">
-      Informarmos e esclarecemos as suas dúvidas financeiras. Crédito habitação,
-      automóvel, pessoal e transferências de crédito. Ajudamos a conseguir as
-      melhores condições para os seus projectos
+    <p className="mt-4 text-gray-700 text-sm text-center">
+      Aconcelhamos e esclarecemos as suas dúvidas financeiras. Crédito
+      habitação, automóvel, pessoal e transferências de crédito. Ajudamos a
+      conseguir as melhores condições para os seus projectos
     </p>
   </Layout>
 );

@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
                 €
               </span>
               <span className="px-1 text-xl hover:text-pink-400 text-gray-900">
-                {data.site.siteMetadata.title.split(" ")[1]}
+                {data.site.siteMetadata.title.split(" ")[1].toLowerCase()}
               </span>
             </Link>
           </div>
@@ -62,7 +62,7 @@ const Layout = ({ children }) => {
               </Link>
             </nav>
             <button
-              className="block sm:hidden rounded hover:bg-pink-200 focus:outline-none"
+              className="block sm:hidden rounded hover:bg-pink-300 focus:outline-none"
               onClick={() => handleClick()}
             >
               <div
