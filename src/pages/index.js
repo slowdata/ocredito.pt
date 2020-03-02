@@ -33,6 +33,7 @@ const indexPage = ({ data }) => (
         Ajudamos a conseguir as melhores condições para os seus projectos
       </span>
     </p>
+
     <div className="mt-8 p-4 pt-4 bg-pink-600 rounded-lg shadow-md hover:shadow-lg">
       <div className="pt-2 pb-2 border-b border-pink-500">
         <h2 className="text-lg text-white text-center">Soluções de Crédito</h2>
@@ -85,7 +86,7 @@ const indexPage = ({ data }) => (
       </div>
     </div>
 
-    <div className="mt-4 p-4 pt-4 bg-gray-200 rounded-lg shadow-md hover:shadow-lg">
+    <div className="mt-4 p-4 pt-4 bg-gray-300 rounded-lg shadow-md hover:shadow-lg">
       <div className="pt-2 pb-6 border-b border-gray-400">
         <h2 className="text-lg text-gray-800 text-center">Parcerias</h2>
         <p className="mt-2 text-sm font-medium text-gray-800 text-center">
@@ -103,12 +104,12 @@ const indexPage = ({ data }) => (
                 fill="none"
               >
                 <path
-                  className="text-gray-400"
+                  className="text-gray-500"
                   fill="currentColor"
                   d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z"
                 />
                 <path
-                  className="text-gray-600"
+                  className="text-gray-700"
                   d="M8 13l3 3 5-7"
                   stroke="currentColor"
                   strokeWidth="1.5"
