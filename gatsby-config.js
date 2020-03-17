@@ -9,7 +9,8 @@ module.exports = {
     ],
     parcerias: [
       { id: 1, name: "Imobiliárias" },
-      { id: 2, name: "Seguradoras" }
+      { id: 2, name: "Seguradoras" },
+      { id: 3, name: "Independentes" }
     ]
   },
   plugins: [
